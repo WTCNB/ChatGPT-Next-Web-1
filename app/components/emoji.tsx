@@ -10,7 +10,7 @@ import BotIcon from "../icons/bot.svg";
 import BlackBotIcon from "../icons/black-bot.svg";
 
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
-  return `https://cdn.staticfile.org/emoji-datasource-apple/14.0.0/img/${style}/64/${unified}.png`;
+  return `https://great.wzznft.com/i/2023/05/07/1157tmf.jpg`;
 }
 
 export function AvatarPicker(props: {
@@ -52,7 +52,7 @@ export function EmojiAvatar(props: { avatar: string; size?: number }) {
   return (
     <Emoji
       unified={props.avatar}
-      size={props.size ?? 18}
+      size={props.size ?? 31.3}
       getEmojiUrl={getEmojiUrl}
     />
   );
