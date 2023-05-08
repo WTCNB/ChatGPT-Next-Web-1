@@ -4,7 +4,6 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import SendWhiteIcon from "../icons/send-white.svg";
 import BrainIcon from "../icons/brain.svg";
 import RenameIcon from "../icons/rename.svg";
-import ClearIcon from "../icons/clear.svg";
 import ExportIcon from "../icons/share.svg";
 import ReturnIcon from "../icons/return.svg";
 import CopyIcon from "../icons/copy.svg";
@@ -315,31 +314,7 @@ function useScrollToBottom() {
   };
 }
 
-export function ChatActions(props: {
-  showPromptModal: () => void;
-  scrollToBottom: () => void;
-  showPromptHints: () => void;
-  hitBottom: boolean;
-}) {
-  const config = useAppConfig();
-  const navigate = useNavigate();
 
-  // switch themes
-  const theme = config.theme;
-  function nextTheme() {
-    const themes = [Theme.Auto, Theme.Light, Theme.Dark];
-    const themeIndex = themes.indexOf(theme);
-    const nextIndex = (themeIndex + 1) % themes.length;
-    const nextTheme = themes[nextIndex];
-    config.update((config) => (config.theme = nextTheme));
-  }
-
-  // stop all responses
-  const couldStop = ControllerPool.hasPending();
-  const stopAll = () => ControllerPool.stopAll();
-
-  
-}
 
 export function Chat() {
   type RenderMessage = Message & { preview?: boolean };
@@ -558,12 +533,7 @@ export function Chat() {
       chatStore.updateCurrentSession((session) => (session.topic = newTopic!));
     }
   };
-  const clearMsgList = () => {
-    const chatRecords1 = document.querySelectorAll('.home_chat-message__rdH_g');
-    const chatRecords2 = document.querySelectorAll('.home_chat-message-user__WsuiB');
-    chatRecords1.forEach(record => record.remove());
-    chatRecords2.forEach(record => record.remove());
-  };
+
   const location = useLocation();
   const isChat = location.pathname === Path.Chat;
   const autoFocus = !isMobileScreen || isChat; // only focus in chat page
@@ -589,13 +559,6 @@ export function Chat() {
               bordered
               title={Locale.Chat.Actions.ChatList}
               onClick={() => navigate(Path.Home)}
-            />
-          </div>
-          <div className="window-action-button">
-            <IconButton
-              icon={<ClearIcon />}
-              bordered
-              onClick={clearMsgList}
             />
           </div>
           <div className="window-action-button">
@@ -745,16 +708,6 @@ export function Chat() {
 
       <div className={styles["chat-input-panel"]}>
         <PromptHints prompts={promptHints} onPromptSelect={onPromptSelect} />
-
-        <ChatActions
-          showPromptModal={() => setShowPromptModal(true)}
-          scrollToBottom={scrollToBottom}
-          hitBottom={hitBottom}
-          showPromptHints={() => {
-            inputRef.current?.focus();
-            onSearch("");
-          }}
-        />
         <div className={styles["chat-input-panel-inner"]}>
           <textarea
             ref={inputRef}
