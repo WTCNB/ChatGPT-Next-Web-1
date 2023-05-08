@@ -533,7 +533,12 @@ export function Chat() {
       chatStore.updateCurrentSession((session) => (session.topic = newTopic!));
     }
   };
-
+ const clearMsgList = () => {
+    const chatRecords1 = document.querySelectorAll('.home_chat-message__rdH_g');
+    const chatRecords2 = document.querySelectorAll('.home_chat-message-user__WsuiB');
+    chatRecords1.forEach(record => record.remove());
+    chatRecords2.forEach(record => record.remove());
+  };
   const location = useLocation();
   const isChat = location.pathname === Path.Chat;
   const autoFocus = !isMobileScreen || isChat; // only focus in chat page
@@ -561,6 +566,13 @@ export function Chat() {
               onClick={() => navigate(Path.Home)}
             />
           </div>
+          <div className="window-action-button">
+            <IconButton
+              icon={<ClearIcon />}
+              bordered
+              onClick={clearMsgList}
+            />
+          </div>                                            
           <div className="window-action-button">
             <IconButton
               icon={<RenameIcon />}
