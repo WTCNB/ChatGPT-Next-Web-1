@@ -10,7 +10,7 @@ import BotIcon from "../icons/bot.svg";
 import BlackBotIcon from "../icons/black-bot.svg";
 
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
-  return `https://great.wzznft.com/i/2023/05/07/1157tmf.jpg`;
+  return `https://sm.ms/image/894YJMC5zstUKpd`;
 }
 
 export function AvatarPicker(props: {
