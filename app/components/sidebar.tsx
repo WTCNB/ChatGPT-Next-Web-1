@@ -96,24 +96,13 @@ export function SideBar(props: { className?: string }) {
       }`}
     >
       <div className={styles["sidebar-header"]}>
-        <div className={styles["sidebar-title"]}>Analiya</div>
-        <div className={styles["sidebar-sub-title"]}>
-          致力于全民使用ChatGpt
-        </div>
+        <div className={styles["sidebar-title"]}>阿纳里亚</div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
         </div>
       </div>
 
-      <div className={styles["sidebar-header-bar"]}>
-        <IconButton
-          icon={<MaskIcon />}
-          text={shouldNarrow ? undefined : Locale.Mask.Name}
-          className={styles["sidebar-bar-button"]}
-          onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
-          shadow
-        />
-      </div>
+      
 
       <div
         className={styles["sidebar-body"]}
