@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import SendWhiteIcon from "../icons/send-white.svg";
 import BrainIcon from "../icons/brain.svg";
 import RenameIcon from "../icons/rename.svg";
+import ClearIcon from "../icons/clear.svg";
 import ExportIcon from "../icons/share.svg";
 import ReturnIcon from "../icons/return.svg";
 import CopyIcon from "../icons/copy.svg";
@@ -337,63 +338,7 @@ export function ChatActions(props: {
   const couldStop = ControllerPool.hasPending();
   const stopAll = () => ControllerPool.stopAll();
 
-  return (
-    <div className={chatStyle["chat-input-actions"]}>
-      {couldStop && (
-        <div
-          className={`${chatStyle["chat-input-action"]} clickable`}
-          onClick={stopAll}
-        >
-          <StopIcon />
-        </div>
-      )}
-      {!props.hitBottom && (
-        <div
-          className={`${chatStyle["chat-input-action"]} clickable`}
-          onClick={props.scrollToBottom}
-        >
-          <BottomIcon />
-        </div>
-      )}
-      {props.hitBottom && (
-        <div
-          className={`${chatStyle["chat-input-action"]} clickable`}
-          onClick={props.showPromptModal}
-        >
-          <BrainIcon />
-        </div>
-      )}
-
-      <div
-        className={`${chatStyle["chat-input-action"]} clickable`}
-        onClick={nextTheme}
-      >
-        {theme === Theme.Auto ? (
-          <AutoIcon />
-        ) : theme === Theme.Light ? (
-          <LightIcon />
-        ) : theme === Theme.Dark ? (
-          <DarkIcon />
-        ) : null}
-      </div>
-
-      <div
-        className={`${chatStyle["chat-input-action"]} clickable`}
-        onClick={props.showPromptHints}
-      >
-        <PromptIcon />
-      </div>
-
-      <div
-        className={`${chatStyle["chat-input-action"]} clickable`}
-        onClick={() => {
-          navigate(Path.Masks);
-        }}
-      >
-        <MaskIcon />
-      </div>
-    </div>
-  );
+  
 }
 
 export function Chat() {
@@ -613,7 +558,12 @@ export function Chat() {
       chatStore.updateCurrentSession((session) => (session.topic = newTopic!));
     }
   };
-
+  const clearMsgList = () => {
+    const chatRecords1 = document.querySelectorAll('.home_chat-message__rdH_g');
+    const chatRecords2 = document.querySelectorAll('.home_chat-message-user__WsuiB');
+    chatRecords1.forEach(record => record.remove());
+    chatRecords2.forEach(record => record.remove());
+  };
   const location = useLocation();
   const isChat = location.pathname === Path.Chat;
   const autoFocus = !isMobileScreen || isChat; // only focus in chat page
@@ -639,6 +589,13 @@ export function Chat() {
               bordered
               title={Locale.Chat.Actions.ChatList}
               onClick={() => navigate(Path.Home)}
+            />
+          </div>
+          <div className="window-action-button">
+            <IconButton
+              icon={<ClearIcon />}
+              bordered
+              onClick={clearMsgList}
             />
           </div>
           <div className="window-action-button">
