@@ -535,10 +535,12 @@ export function Chat() {
     }
   };
  const clearMsgList = () => {
-    const chatRecords1 = document.querySelectorAll('.home_chat-message__rdH_g');
-    const chatRecords2 = document.querySelectorAll('.home_chat-message-user__WsuiB');
-    chatRecords1.forEach(record => record.remove());
-    chatRecords2.forEach(record => record.remove());
+    const id=chatStore.currentSessionIndex;
+    chatStore.deleteSession(id);
+    if (chatStore.sessions.length!=1)
+    {
+      chatStore.newSession();
+    }
   };
   const location = useLocation();
   const isChat = location.pathname === Path.Chat;
