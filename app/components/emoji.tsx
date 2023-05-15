@@ -10,9 +10,9 @@ import BotIcon from "../icons/bot.svg";
 import BlackBotIcon from "../icons/black-bot.svg";
 
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
-  if(unified!="1111")
+  if(unified !="1f603")
   {
-    return `https://great.wzznft.com/i/2023/05/07/1157tmf.jpg`;
+    return 'https://bhsv.xyz/i/2023/05/14/5hz9m.jpeg';
   }
   else
   {
