@@ -12,7 +12,7 @@ import BlackBotIcon from "../icons/black-bot.svg";
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
   if(unified !="1f603")
   {
-    return 'https://pan.quark.cn/s/c32b2e9cc930';
+    return 'https://i.postimg.cc/nhrsg0fv/e9dbe9beec82d7114f9a3296122272f.jpg';
   }
   else
   {
