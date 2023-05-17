@@ -12,7 +12,7 @@ import BlackBotIcon from "../icons/black-bot.svg";
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
   if(unified !="1f603")
   {
-    return '';
+    return 'https://i.postimg.cc/yNDbFNn6/android-chrome-192x192.png';
   }
   else
   {
