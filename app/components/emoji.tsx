@@ -16,7 +16,7 @@ export function getEmojiUrl(unified: string, style: EmojiStyle) {
   }
   else
   {
-    return ``;
+    return `https://i.postimg.cc/521xr2Mv/123.jpg`;
   }
 }
 
