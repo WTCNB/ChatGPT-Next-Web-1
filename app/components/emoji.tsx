@@ -12,11 +12,11 @@ import BlackBotIcon from "../icons/black-bot.svg";
 export function getEmojiUrl(unified: string, style: EmojiStyle) {
   if(unified !="1f603")
   {
-    return 'https://i.postimg.cc/yNDbFNn6/android-chrome-192x192.png';
+    return 'https://s1.x914.com/analiya/i/2023/05/18/61jj.png';
   }
   else
   {
-    return `https://i.postimg.cc/521xr2Mv/123.jpg`;
+    return `https://s1.x914.com/analiya/i/2023/05/18/v1s.jpg`;
   }
 }
 
